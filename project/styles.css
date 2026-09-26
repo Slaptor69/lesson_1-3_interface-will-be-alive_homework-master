@@ -10,8 +10,7 @@
   --radius-large: 1.5rem;
   --radius-medium: 1rem;
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
 }
 
@@ -101,14 +100,6 @@ a:focus-visible {
   gap: 0.5rem;
 }
 
-.site-header__status span {
-  width: 0.65rem;
-  height: 0.65rem;
-  border-radius: 50%;
-  background: var(--signal);
-  box-shadow: 0 0 0 0.25rem rgb(184 255 61 / 24%);
-}
-
 .page {
   width: min(100% - 3rem, 90rem);
   margin: 0 auto;
@@ -141,12 +132,6 @@ a:focus-visible {
   font-size: clamp(3rem, 7.5vw, 7.7rem);
   line-height: 0.88;
   letter-spacing: -0.075em;
-}
-
-.intro h1 em {
-  color: #475273;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 400;
 }
 
 .intro__lead {
@@ -288,20 +273,8 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
-.collection-card__symbol {
-  display: grid;
-  place-items: center;
-  width: 4.4rem;
-  height: 4.4rem;
-  margin: 2.8rem 0 auto;
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.2rem;
-}
-
 .collection-card__title {
-  margin-top: 2.2rem;
+  margin-top: auto;
   font-size: clamp(1.6rem, 3vw, 2.5rem);
   font-weight: 850;
   letter-spacing: -0.05em;
@@ -321,7 +294,6 @@ a:focus-visible {
   flex-direction: column;
   min-height: 39.4rem;
   padding: 1.35rem;
-  overflow: hidden;
   background:
     radial-gradient(circle at 100% 0, rgb(184 255 61 / 22%), transparent 35%),
     var(--ink);
@@ -362,17 +334,9 @@ a:focus-visible {
   color: rgb(255 255 255 / 70%);
 }
 
-.details-panel__marker {
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  background: var(--signal);
-  box-shadow: 0 0 0 0.3rem rgb(184 255 61 / 22%);
-}
-
 .details-panel__content {
   margin: auto 0;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
 .details-panel__number {
@@ -382,9 +346,10 @@ a:focus-visible {
 
 .details-panel h2 {
   margin: 0;
-  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-size: clamp(2rem, 3vw, 3.25rem);
   line-height: 0.95;
   letter-spacing: -0.065em;
+  overflow-wrap: anywhere;
 }
 
 .details-panel__content > p:last-child {
@@ -418,7 +383,7 @@ a:focus-visible {
 }
 
 .details-panel--pulse {
-  animation: panel-pulse 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: panel-pulse 340ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .assignment-note {
@@ -475,8 +440,8 @@ a:focus-visible {
 
 @keyframes panel-pulse {
   0% {
-    transform: scale(0.985);
-    filter: brightness(1.18);
+    transform: scale(0.995);
+    filter: brightness(1.06);
   }
 
   100% {
