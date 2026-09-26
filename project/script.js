@@ -6,6 +6,7 @@ const detailsTitle = document.querySelector("#details-title");
 const detailsDescription = document.querySelector("#details-description");
 const filterButtons = document.querySelectorAll(".filter-button");
 const visibleCount = document.querySelector("#visible-count");
+const randomButton = document.querySelector("#random-button");
 const initialTitle = detailsTitle.textContent;
 const initialDescription = detailsDescription.textContent.trim();
 
@@ -63,4 +64,18 @@ function applyFilter(filter) {
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => applyFilter(button.dataset.filter));
+});
+
+randomButton.addEventListener("click", () => {
+  const visibleCards = Array.from(cards).filter(
+    (card) => !card.classList.contains("collection-card--hidden"),
+  );
+  if (visibleCards.length === 0) return;
+
+  const selectedCard = document.querySelector(".collection-card--selected");
+  const otherCards = visibleCards.filter((card) => card !== selectedCard);
+  const options = otherCards.length > 0 ? otherCards : visibleCards;
+  const randomIndex = Math.floor(Math.random() * options.length);
+
+  selectCard(options[randomIndex]);
 });
