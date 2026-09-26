@@ -7,6 +7,7 @@ const detailsDescription = document.querySelector("#details-description");
 const filterButtons = document.querySelectorAll(".filter-button");
 const visibleCount = document.querySelector("#visible-count");
 const randomButton = document.querySelector("#random-button");
+const resetButton = document.querySelector("#reset-button");
 const initialTitle = detailsTitle.textContent;
 const initialDescription = detailsDescription.textContent.trim();
 
@@ -78,4 +79,11 @@ randomButton.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * options.length);
 
   selectCard(options[randomIndex]);
+});
+
+applyFilter("all");
+
+resetButton.addEventListener("click", () => {
+  applyFilter("all");
+  clearSelection();
 });
