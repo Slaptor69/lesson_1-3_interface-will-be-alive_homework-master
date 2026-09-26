@@ -4,6 +4,10 @@ const cards = document.querySelectorAll(".collection-card");
 const detailsPanel = document.querySelector(".details-panel");
 const detailsTitle = document.querySelector("#details-title");
 const detailsDescription = document.querySelector("#details-description");
+const filterButtons = document.querySelectorAll(".filter-button");
+const visibleCount = document.querySelector("#visible-count");
+const initialTitle = detailsTitle.textContent;
+const initialDescription = detailsDescription.textContent.trim();
 
 function selectCard(card) {
   cards.forEach((item) => {
@@ -23,4 +27,40 @@ function selectCard(card) {
 
 cards.forEach((card) => {
   card.addEventListener("click", () => selectCard(card));
+});
+
+function clearSelection() {
+  cards.forEach((card) => {
+    card.classList.remove("collection-card--selected");
+    card.setAttribute("aria-pressed", "false");
+  });
+
+  detailsTitle.textContent = initialTitle;
+  detailsDescription.textContent = initialDescription;
+  detailsPanel.classList.remove("details-panel--pulse");
+}
+
+function applyFilter(filter) {
+  filterButtons.forEach((button) => {
+    const isActive = button.dataset.filter === filter;
+    button.classList.toggle("filter-button--active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  let count = 0;
+  cards.forEach((card) => {
+    const isVisible = filter === "all" || card.dataset.category === filter;
+    card.classList.toggle("collection-card--hidden", !isVisible);
+    if (isVisible) count++;
+  });
+  visibleCount.textContent = count;
+
+  const selectedCard = document.querySelector(".collection-card--selected");
+  if (selectedCard && selectedCard.classList.contains("collection-card--hidden")) {
+    clearSelection();
+  }
+}
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => applyFilter(button.dataset.filter));
 });
