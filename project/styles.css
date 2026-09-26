@@ -134,11 +134,6 @@ a:focus-visible {
   letter-spacing: -0.075em;
 }
 
-.intro h1 em {
-  color: #475273;
-  font-weight: 400;
-}
-
 .intro__lead {
   max-width: 31rem;
   margin: 0;
@@ -388,7 +383,7 @@ a:focus-visible {
 }
 
 .details-panel--pulse {
-  animation: panel-pulse 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: panel-pulse 340ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .assignment-note {
@@ -445,8 +440,8 @@ a:focus-visible {
 
 @keyframes panel-pulse {
   0% {
-    transform: scale(0.99);
-    filter: brightness(1.08);
+    transform: scale(0.995);
+    filter: brightness(1.06);
   }
 
   100% {
